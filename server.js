@@ -1,10 +1,12 @@
 ﻿require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 const Redis = require("ioredis");
 const { v4: uuidv4 } = require("uuid");
 const Amadeus = require("amadeus");
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 // Redis connection
