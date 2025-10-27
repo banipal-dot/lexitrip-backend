@@ -10,22 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 // Redis connection
-let redis;
-let redisConnected = false;
-try {
-  redis = new Redis(process.env.REDIS_URL || "redis://127.0.0.1:6379");
-  redis.on("connect", () => {
-    console.log("[ioredis] connected");
-    redisConnected = true;
-  });
-  redis.on("error", (err) => {
-    console.warn("[ioredis] error", err?.message || err);
-    redisConnected = false;
-  });
-} catch (e) {
-  console.warn("[ioredis] init failed", e.message || e);
-  redisConnected = false;
-}
+console.log('[Redis] skipped — using AWS backend only for now');
 
 const localHolds = new Map();
 const HOLD_TTL = 600;
